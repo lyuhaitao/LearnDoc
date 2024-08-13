@@ -462,3 +462,110 @@ window.addEventListener('Keypress',
 # 前段知识图谱
 
 `TypeScript`, `ThreeJs`, WebGL, Echarts, NodeJS, Egg, Redis, Mongodb, Sequelize, Express, Koa,
+
+# VUE 3
+
+- setup函数可以返回一个函数或箭头函数直接渲染网页端
+
+- setup函数中let定义的变量不是响应式的
+
+- vue2中的选项是语法可以和vue3的setup语法共存
+
+- 选项式语法`data, methods`可以访问setup中的数据，反之则不行
+
+## Vue3响应式数据 - ref and reactive
+
+- ref 封装基本数据为RefImpl类，变成响应式
+
+- reactive =================> 对象类型的数据
+  
+  - 不能直接用等号修改：person = {name:'peter'}
+  
+  - 利用Object.assign(person, {name:'peter'})修改
+
+## Computed 计算属性
+
+## Watch数据的变化
+
+- ref定义的数据
+
+- ref定义的对象数据
+  
+  - 监视ref定义的`对象类型` 数据：直接写数据名，监视的是对象的地址，若想监视对象内部的数据，要手动开启深度监视。
+  - 若修改的式ref定义的对象中的属性，newValue和oldValue都是新值，因为他们是同一个对象
+  - 若修改整个ref对象，newValue是新值，oldValue是旧值，因为不是同一个对象
+  - watch配置： deep, immediate
+- recactive定义的对象数据
+  - 默认开启深度监视，且这种监听是关不掉
+  - reactive里面包含的ref对象，该对象会自动被拆包，不用靠.value访问具体的值
+- 监视ref或reactive定义的对象数据中的某个属性，注意点如下：
+  - 若该属性值不是对象类型，需要写成函数形式
+  - 若该属性值依然是对象类型，可直接编，也可写成函数，建议写成函数
+- 函数返回值
+
+- 一个包含上述内容的数组
+
+## WatchEffect
+
+它会自己分析自动去监视对象
+
+## style 添加scoped属性，生成局部样式id.
+
+## 标签的ref属性
+
+- ref用在普通的html标签，得到的是DoM元素
+
+- ref用在组件标签里，得到组件实例
+  
+  - defineExpose定义组件想要暴漏的属性
+
+## TS中接口，泛型和自定义类型
+
+- 三种暴漏方式：默认暴露，分别暴露，统一暴露    
+
+- vue中@符号代表程序根目录
+
+## Props的使用
+
+```js
+import {defineProps} from 'vue'
+definePropos(['a'])
+```
+
+## defineXXX函数在vue中不用引入可以直接用，他是宏函数
+
+## 声明周期，组件的一生
+
+创建，挂载，更新，销毁
+
+# axios Package install
+
+## 自定义hooks适合架构师做模块化开发
+
+## 安装路由器模块 `npm i vue-router`
+
+路由器的工作模式
+
+- hash模式
+
+- histroy模式：`createWebHistory()`
+
+## 编程式路由导航很重要
+
+## 集中式状态（数据）管理工具Pinia
+
+类似的redux,vuex.
+
+## uuid和nanoid可以用来生成唯一id
+
+## pubsub消息订阅与发布
+
+## UI组件库大量使用v-model进行组件通信
+
+## $event到底是什么？
+
+- 对于原生事件，$event就是事件对象 ===> event.target
+
+- 对于自定义事件，$event就是触发事件时候，所传递的数据
+
+## Provide , inject用于祖孙之间传递数据

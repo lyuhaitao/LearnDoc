@@ -52,8 +52,6 @@ const sub = (a:number, b:number):number =>{
 }
 ```
 
-
-
 ## 单独指定参数和返回类型
 
 ```js
@@ -281,7 +279,6 @@ type PropsType = {house?:string}
 defineProps<PropsType>()
 //设置默认值，在解构时候设置
 const {house = 'small'}  = defineProps<PropsType>()
-
 ```
 
 ## defineEmits 约Typescript 子传父亲
@@ -348,7 +345,6 @@ const move= (e:MouseEvent)=>{
 <img ref='automan' src='1.jpg'>
 
 //
-
 ```
 
 # 可选链操作符
